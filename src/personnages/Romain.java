@@ -21,7 +21,7 @@ private String prendreParole() {
 	return "Le romain " + nom + ": ";
 }
 
-public void recevoirCoup(int forceCoup() {
+public void recevoirCoup(int forceCoup) {
 	force -= forceCoup;
 	if (force < 0) {
 		parler("Aie");
