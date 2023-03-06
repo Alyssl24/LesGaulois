@@ -15,7 +15,7 @@ public String getNom() {
 }
 
 public void parler(String texte) {
-	System.out.println(prendreParole() + "«" + texte + "»");
+	System.out.println(prendreParole() + "Â«" + texte + "Â»");
 }
 
 private String prendreParole() {
@@ -23,20 +23,24 @@ private String prendreParole() {
 }
 
 public void frapper(Romain romain) {
-	System.out.println((nom + "envoie un grand coup dans la mâchoire de " + romain.getNom()));
+	System.out.println((nom + "envoie un grand coup dans la machoire de " + romain.getNom()));
 	romain.recevoirCoup(force / 3);
 }
 
-
 @Override
-//public String toString() {
-//	return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
-//}
+public String toString() {
+	return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
+}
+
 
 
 public static void main(String[] args) {
-	asterix (nom ="Astérix", force = 8);
-	System.out.println(asterix);
+	Gaulois gertrude = new Gaulois ("Gertrude", 8);
+	System.out.println(gertrude);
+	System.out.println(gertrude.prendreParole());
+	gertrude.parler("Holla que tal?");
+	Romain romano = new Romain ("Romano", 7);
+	gertrude.frapper(romano);
 }
 
 
