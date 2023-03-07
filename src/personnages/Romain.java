@@ -50,7 +50,7 @@ public void recevoirCoup(int forceCoup) {
 			System.out.println("Le soldat " + nom + " est déjà bien protégé!");
 			break;
 		case 1:
-			if (equipements[nbEquipements - 1] == equipement) System.out.println("Le soldat " + nom + " possède déjà un " + equipement + "!");
+			if (equipements[0] == equipement) System.out.println("Le soldat " + nom + " possède déjà un " + equipement + "!");
 			else {
 				mettreEquipement(equipement);
 			}
