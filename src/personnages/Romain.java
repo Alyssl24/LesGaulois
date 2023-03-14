@@ -6,27 +6,31 @@ public class Romain {
 	private Equipement [] equipements;
 	private int nbEquipement = 0;
 	
-public Romain(String nom, int force) {
-	// correspond aux assert
-	if (force >= 0) {
-		throw new IllegalArgumentException("force du Romain négative " + force);
+	public Romain(String nom, int force) {
+		// correspond aux assert
+		if (force < 0) {
+			throw new IllegalArgumentException("force du Romain négative " + force);
+		}
+		this.nom = nom;
+		this.force = force;
+		this.equipements = new Equipement [2];
 	}
-	this.nom = nom;
-	this.force = force;
-	this.equipements = new Equipement [2];
-}
+		
+	public String getNom() {
+		return nom;
+	}
 	
-public String getNom() {
-	return nom;
-}
-
-public void parler(String texte) {
-	System.out.println(prendreParole() + "«" + texte + "»");
-}
-
-private String prendreParole() {
-	return "Le romain " + nom + ": ";
-}
+	public int getForce() {
+		return force;
+	}
+	
+	public void parler(String texte) {
+		System.out.println(prendreParole() + "«" + texte + "»");
+	}
+	
+	private String prendreParole() {
+		return "Le romain " + nom + ": ";
+	}
 
 
 	public Equipement[] recevoirCoup(int forceCoup) {
@@ -36,13 +40,7 @@ private String prendreParole() {
 		int oldForce = force;
 		forceCoup = calculResistanceEquipement(forceCoup);
 		force -= forceCoup;
-		// if (force > 0) {
-			// parler("Aïe");
-		// } else {
-			// equipementEjecte = ejecterEquipement();
-			// parler("J'abandonne...");
-		// }
-		if (force == 0) {
+		if (force > 0) {
 			parler("Aïe");
 		}
 		else {
@@ -74,6 +72,7 @@ private String prendreParole() {
 		}
 		parler(texte);
 		forceCoup -= resistanceEquipement;
+		if (forceCoup < 0) forceCoup = 0;
 		return forceCoup;
 		}
 	
@@ -120,8 +119,6 @@ private String prendreParole() {
 		}
 	}
 	
-
-
 
 public static void main(String[] args) {
 	Romain minus = new Romain ("Minus", 6);
