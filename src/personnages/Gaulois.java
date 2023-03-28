@@ -24,14 +24,11 @@ public class Gaulois {
 	private String prendreParole() {
 		return ("Le gaulois " + nom + " : ");
 	}
-	
-
-	
+		
 	
 	public void frapper(Romain romain) {
 		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
-		Equipement[] lesTrophees = romain.recevoirCoup((force / 3) *
-		effetPotion);
+		Equipement [] lesTrophees = romain.recevoirCoup((force / 3) * effetPotion);
 		for (int i = 0; lesTrophees != null && i < lesTrophees.length; i++, nbTrophees++) {
 			this.trophees[nbTrophees] = lesTrophees[i];
 		}
@@ -44,14 +41,19 @@ public class Gaulois {
 	}
 	
 	
+	public void faireUneDonnation(Gaulois gaulois, Musee musee) {
+		parler("Je donne au musee tous mes trophees:");
+		for (int i = 0; i < nbTrophees; i++) {
+			System.out.println(trophees[i]);
+			musee.donnerTrophees(gaulois, trophees[i]);
+		}
+		nbTrophees = 0;
+	}
+	
+	
 	public static void main(String[] args) {
 		Gaulois gertrude = new Gaulois ("Gertrude", 8);
-		System.out.println(gertrude);
-		System.out.println(gertrude.prendreParole());
-		gertrude.parler("Holla que tal?");
-		Romain romano = new Romain ("Romano", 7);
-		gertrude.frapper(romano);
-		gertrude.boirePotion(5);
+		gertrude.faireUneDonnation(gertrude, );
 	}
 
 
